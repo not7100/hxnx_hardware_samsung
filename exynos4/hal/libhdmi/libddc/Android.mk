@@ -25,7 +25,7 @@ LOCAL_SRC_FILES := libddc.c
 
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH) \
-	$(LOCAL_PATH)/../../../include
+	$(LOCAL_PATH)/../../include
 
 ifeq ($(BOARD_HDMI_DDC_CH), DDC_CH_I2C_7)
 LOCAL_CFLAGS  += -DDDC_CH_I2C_7

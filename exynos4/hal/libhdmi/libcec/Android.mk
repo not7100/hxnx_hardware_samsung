@@ -12,6 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(filter-out exynos4,$(TARGET_BOARD_PLATFORM)),)
-include $(all-subdir-makefiles)
+ifeq ($(BOARD_USES_HDMI),true)
+
+LOCAL_PATH:= $(call my-dir)
+include $(CLEAR_VARS)
+
+LOCAL_MODULE_TAGS := eng
+
+LOCAL_PRELINK_MODULE := false
+LOCAL_SHARED_LIBRARIES := liblog
+LOCAL_SRC_FILES := libcec.c
+
+LOCAL_C_INCLUDES := \
+	$(LOCAL_PATH) \
+	$(LOCAL_PATH)/../../include
+
+LOCAL_MODULE := libcec
+include $(BUILD_SHARED_LIBRARY)
+
 endif
