@@ -18,7 +18,7 @@ ifeq ($(TARGET_SLSI_VARIANT),)
 
 ifeq ($(TARGET_BOARD_PLATFORM),exynos4)
 
-common_exynos4_dirs := libgralloc_ump libhdmi libhwcomposer libhwconverter libsecion libUMP
+common_exynos4_dirs := libgralloc_ump libhdmi libhwconverter libsecion libUMP
 
 common_exynos4_dirs += libhwc libexynosfimc libv4l2 libexynosutils
 
