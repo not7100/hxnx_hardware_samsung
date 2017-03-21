@@ -285,6 +285,7 @@ static int gralloc_alloc_buffer(alloc_device_t* dev, size_t size, int usage,
 
     size = round_up_to_page_size(size);
 
+    usage |= GRALLOC_USAGE_HW_FIMC1;
     if (usage & GRALLOC_USAGE_HW_FIMC1) {
         ALOGD_IF(debug_level > 0, "%s usage = GRALLOC_USAGE_HW_FIMC1", __func__);
         return gralloc_alloc_fimc1(size, usage, pHandle, w, h, format, bpp, stride_raw, stride);
