@@ -84,7 +84,7 @@ struct s3c_fb_win_config {
 		S3C_FB_WIN_STATE_BUFFER,
 	} state;
 
-	union {
+ 	union {
 		__u32 color;
 		struct {
 			int	fd;
@@ -95,10 +95,11 @@ struct s3c_fb_win_config {
 			enum s3c_fb_pixel_format format;
 			enum s3c_fb_blending blending;
 			int	fence_fd;
+			int     plane_alpha;
 		};
-	};
 
-	int	x;
+	};
+ 	int	x;
 	int	y;
 	__u32	w;
 	__u32	h;
@@ -155,6 +156,16 @@ struct s3c_fb_user_ion_client {
 #define S3CFB_SET_INITIAL_CONFIG    _IO  ('F', 314)
 #define S3CFB_SUPPORT_FENCE         _IOW ('F', 315, unsigned int)
 
+/* IOCTL commands from drivers/video/samsung_extdisp/s3cfb_extdsp.h */
+struct s3cfb_extdsp_time_stamp {
+	unsigned int		phys_addr;
+	struct timeval		time_marker;
+};
+
+#define S3CFB_EXTDSP_SET_WIN_ADDR       _IOW('F', 308, unsigned long)
+#define S3CFB_EXTDSP_GET_LOCKED_BUFFER  _IOW('F', 322, unsigned int)
+#define S3CFB_EXTDSP_PUT_TIME_STAMP		_IOW('F', 323, \
+						struct s3cfb_extdsp_time_stamp)
 
 /***************** LCD frame buffer *****************/
 #define FB0_NAME    "/dev/fb0"
